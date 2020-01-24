@@ -35,25 +35,8 @@ function KeyHandler(event)
     {
         PlayerTwo.y -= 5;
     }
-
-    // switch (event.key)
-    // {
-    //     case "s":
-    //         PlayerOne.y += 5;
-    //         break;
-    //     case "w":
-    //         PlayerOne.y -= 5;
-    // }
-
-    // switch (event.key)
-    // {
-    //     case "s":
-    //         PlayerTwo.y += 5;
-    //         break;
-    //     case "w":
-    //         PlayerTwo.y -= 5;
-    // }
 }
+
 // 
 
 let PlayerOne = {};
@@ -125,6 +108,10 @@ function loop()
     ball.draw();
     PlayerOne.draw();
     PlayerTwo.draw();
+    if (ball.x > PlayerTwo.x - ball.width && ball.y > PlayerTwo && ball.y + PlayerTwo.y + )
+    {
+        ball.speedX = ball.speedX
+    }
 }
 
 setInterval(loop, 10);
