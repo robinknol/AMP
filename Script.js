@@ -108,10 +108,12 @@ function loop()
     ball.draw();
     PlayerOne.draw();
     PlayerTwo.draw();
-    if (ball.x > PlayerTwo.x - ball.width && ball.y > PlayerTwo && ball.y + PlayerTwo.y + )
-    {
-        ball.speedX = ball.speedX
-    }
 }
 
 setInterval(loop, 10);
+
+// Unfinished code for collision
+// if (ball.x > PlayerTwo.x - ball.width && ball.y > PlayerTwo && ball.y + PlayerTwo.y + )
+// {
+//     ball.speedX = ball.speedX
+// }
