@@ -43,10 +43,12 @@ let PlayerOne = {};
 
 PlayerOne.x = 20;
 PlayerOne.y = 350;
+PlayerOne.width = 20;
+PlayerOne.height = 200;
 
 PlayerOne.draw = function()
 {
-    context.fillRect(PlayerOne.x, PlayerOne.y, 20, 100);
+    context.fillRect(PlayerOne.x, PlayerOne.y, PlayerOne.width, PlayerOne.height);
 }
 
 // 
@@ -55,10 +57,12 @@ let PlayerTwo = {};
 
 PlayerTwo.x = 1500;
 PlayerTwo.y = 350;
+PlayerTwo.width = 20;
+PlayerTwo.height = 200;
 
 PlayerTwo.draw = function()
 {
-    context.fillRect(PlayerTwo.x, PlayerTwo.y, 20, 100);
+    context.fillRect(PlayerTwo.x, PlayerTwo.y, PlayerTwo.width, PlayerTwo.height);
 }
 
 // 
@@ -67,6 +71,8 @@ let ball = {};
 
 ball.x = 300;
 ball.y = 350;
+ball.height = 20;
+ball.width = 20;
 ball.speedX = 3;
 ball.speedY = 4;
 
@@ -80,25 +86,41 @@ ball.update = function()
         ball.speedY = -ball.speedY;
     }
     
-    if (ball.y < 0)
+    else if (ball.y < 0)
     {
         ball.speedY = -ball.speedY;
     }
     
-    if (ball.x > canvas.width)
+    else if (ball.x > canvas.width)
     {
         ball.x = canvas.width/2;
     }
     
-    if (ball.x < -ball.width)
+    else if (ball.x < -ball.width)
     {
         ball.x = canvas.width/2;
+    }
+
+    if (ball.x < PlayerTwo.x + PlayerTwo.width &&
+        ball.x + ball.width > PlayerTwo.x &&
+        ball.y < PlayerTwo.y + PlayerTwo.height &&
+        ball.y + ball.height > PlayerTwo.y)
+    {
+        ball.speedX = -ball.speedX;
+    }
+
+    else if (ball.x < PlayerOne.x + PlayerOne.width &&
+        ball.x + ball.width > PlayerOne.x &&
+        ball.y < PlayerOne.y + PlayerOne.height &&
+        ball.y + ball.height > PlayerOne.y)
+    {
+        ball.speedX = -ball.speedX;
     }
 }
 
 ball.draw = function()
 {
-    context.fillRect(ball.x, ball.y, 20, 20);
+    context.fillRect(ball.x, ball.y, ball.width, ball.height);
 }
 
 function loop()
@@ -111,9 +133,3 @@ function loop()
 }
 
 setInterval(loop, 10);
-
-// Unfinished code for collision
-// if (ball.x > PlayerTwo.x - ball.width && ball.y > PlayerTwo && ball.y + PlayerTwo.y + )
-// {
-//     ball.speedX = ball.speedX
-// }
