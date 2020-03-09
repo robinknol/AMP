@@ -123,6 +123,20 @@ ball.draw = function()
     context.fillRect(ball.x, ball.y, ball.width, ball.height);
 }
 
+let score = {}
+score.PlayerOne = 0;
+score.PlayerTwo = 0;
+score.x = 100;
+score.y = 100;
+score.font = "Verdana";
+score.fontWidth = "20px";
+
+score.draw = function()
+{
+    score.font = score.fontWidth + score.font;
+    context.filltext(score.PlayerOne + "-" + score.PlayerTwo, score.x, score.y);
+}
+
 function loop()
 {
     context.clearRect(0,0,width,height);
@@ -130,6 +144,7 @@ function loop()
     ball.draw();
     PlayerOne.draw();
     PlayerTwo.draw();
+    score.draw();
 }
 
 setInterval(loop, 10);

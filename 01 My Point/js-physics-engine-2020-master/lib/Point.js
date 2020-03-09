@@ -11,14 +11,29 @@
 class Point
 {
 
-  constructor(pos,radius,color)
-  {
-		// hier komt de constructor
-  }
+	constructor(pos,radius,color)
+	{
+		this.pos = pos;
+		this.radius = radius;
+		this.color = color;
+	}
 
-  draw(context)
-  {
-		//hier komt de code om een cirkel te tekenen
-  }
+	draw(context)
+	{
+		console.log(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI);
+		context.beginPath();
+		context.lineWidth = "5";
+		context.fillStyle = this.color;
+		context.arc(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI);
+		context.closePath();
+		context.stroke();
+		context.fill();
+	}
 
+	Update(pos, radius, color)
+	{
+		this.pos = pos
+		this.radius = radius;
+		this.color = color;
+	}
 }
