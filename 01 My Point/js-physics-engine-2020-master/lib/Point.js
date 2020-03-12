@@ -20,7 +20,7 @@ class Point
 
 	draw(context)
 	{
-		console.log(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI);
+		console.log(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI, this.color);
 		context.beginPath();
 		context.lineWidth = "5";
 		context.fillStyle = this.color;
