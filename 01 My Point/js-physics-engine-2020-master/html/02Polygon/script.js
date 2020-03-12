@@ -10,7 +10,6 @@ canvas.height = height;
 // begin hier met jouw code voor deze opdracht
 let points = [];
 
-// for (let i = 0; i < 3; i++)
 function anime()
 {
     let x1 = getRandomInt(0, width);
@@ -34,6 +33,6 @@ function anime()
     myPolygon.draw(context);
 }
 
-anime();
+// anime();
 
-// setInterval(anime, 1);
+setInterval(anime, 1);

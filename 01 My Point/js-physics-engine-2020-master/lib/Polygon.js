@@ -1,6 +1,6 @@
 class Polygon
 {
-    constructor(points1x,points1y,points2x,points2y,points3x,points3y)//,color)
+    constructor(points1x,points1y,points2x,points2y,points3x,points3y)
     {
         this.points1x = points1x;
         this.points1y = points1y;
