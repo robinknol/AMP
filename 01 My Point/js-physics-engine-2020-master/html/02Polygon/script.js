@@ -33,6 +33,6 @@ function anime()
     myPolygon.draw(context);
 }
 
-// anime();
+anime();
 
-setInterval(anime, 1);
+// setInterval(anime, 1);
