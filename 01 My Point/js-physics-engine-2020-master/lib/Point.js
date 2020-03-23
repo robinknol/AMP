@@ -11,11 +11,61 @@
 class Point
 {
 
-	constructor(pos,radius,color)
+	constructor(pos,radius,color,draggable)
 	{
 		this.pos = pos;
 		this.radius = radius;
 		this.color = color;
+		this.draggable = draggable || false;
+
+		if (draggable)
+		{
+			this.drag();
+		}
+	}
+
+	drag()
+	{
+		let mouse = {};
+		let distance;
+		let dragging = false;
+
+		addEventListener('mousedown',(evt)=>
+		{
+			mouse.x = evt.clientX;
+			mouse.y = evt.clientY;
+			console.log(mouse);
+
+			let dx = this.pos.dx - mouse.x;
+			let dy = this.pos.dy - mouse.y;
+			distance = Math.sqrt(dx*dx + dy*dy);
+
+			if(distance < this.radius)
+			{
+				dragging = true;
+			}
+			else
+			{
+				dragging = false;
+			}
+			console.log(dragging);
+			console.log(distance);
+		})
+
+
+		addEventListener('mousemove', (evt)=>
+		{
+			if(dragging)
+			{
+				this.pos.dx = evt.clientX;
+				this.pos.dy = evt.clientY;
+			}
+		})
+
+		addEventListener('mouseup', (evt)=>
+		{
+			dragging = false;
+		})
 	}
 
 	draw(context)
