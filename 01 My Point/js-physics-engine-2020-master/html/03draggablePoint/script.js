@@ -13,7 +13,7 @@ let myPoint = new Point(new Vector2d(200,300),30,getRandomColor(), true);
 
 function anime()
 {
-    context.clearRect(0,0, 0, 0);
+    context.clearRect(0,0, width, height);
     myPoint.draw(context);
 }
 
