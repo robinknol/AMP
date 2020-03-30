@@ -34,7 +34,7 @@ class Point
 		{
 			mouse.x = evt.clientX;
 			mouse.y = evt.clientY;
-			console.log(mouse);
+			// console.log(mouse);
 
 			let dx = this.pos.dx - mouse.x;
 			let dy = this.pos.dy - mouse.y;
@@ -48,8 +48,8 @@ class Point
 			{
 				dragging = false;
 			}
-			console.log(dragging);
-			console.log(distance);
+			// console.log(dragging);
+			// console.log(distance);
 		})
 
 
@@ -70,7 +70,7 @@ class Point
 
 	draw(context)
 	{
-		console.log(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI, this.color);
+		// console.log(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI, this.color);
 		context.beginPath();
 		context.lineWidth = "5";
 		context.fillStyle = this.color;
