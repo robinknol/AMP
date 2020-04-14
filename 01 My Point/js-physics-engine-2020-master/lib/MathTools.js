@@ -9,7 +9,7 @@ function getRandomInt(min, max)
 
 function getRandomColor()
 {
-  let letters = '013456789ABCDEF';
+  let letters = '0123456789ABCDEF';
   let color = '#';
   for (var i = 0; i < 6; i++)
   {

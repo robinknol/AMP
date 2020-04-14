@@ -14,7 +14,7 @@ class Polygon
     {
         console.log(this.points, this.color);
         console.log(getRandomColor());
-        context.beginPath()
+        context.beginPath();
         context.lineWidth = "5";
         context.fillStyle = getRandomColor();
         context.moveTo(this.points1x, this.points1y);
