@@ -11,6 +11,14 @@ class LinearFunction
         return x * this.slope + this.intercept
     }
 
+    intersection(line)
+    {
+        let ans = {}
+        ans.x = (line.intercept - this.intercept)/(this.slope - line.slope);
+        ans.y = this.y(ans.x);
+        return ans;
+    }
+
     draw(context)
     {
         // context.strokeStyle = getRandomColor();
