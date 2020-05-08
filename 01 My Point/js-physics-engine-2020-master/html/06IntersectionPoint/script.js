@@ -18,7 +18,7 @@ D = new Point(new Vector2d(getRandomInt(0, width), getRandomInt(0, height)), 20,
 E = new LinearFunction(1,1);
 F = new LinearFunction(1,1);
 
-interception = new Point(new Vector2d(0,0), 10, getRandomColor(), true)
+interception = new Point(new Vector2d(0,0), 10, getRandomColor())
 
 function anime()
 {

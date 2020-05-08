@@ -13,5 +13,11 @@ class Vector2d
 	{
         this.dx = dx;
         this.dy = dy;
-    }
+	}
+	
+	vectorSum(a,b)
+	{
+		this.dx = a.dx + b.dx;
+        this.dy = a.dy + b.dy;
+	}
 }

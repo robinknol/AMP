@@ -24,6 +24,17 @@ class Point
 		}
 	}
 
+	get vPos()
+	{
+		return new Vector2d(this.pos.dx, this.pos.dy);
+	}
+
+	set vPos(vector)
+	{
+		this.pos.dx = vector.dx;
+        this.pos.dy = vector.dy;
+	}
+
 	drag()
 	{
 		let mouse = {};
