@@ -25,12 +25,16 @@ d = new Vector2d();
 e = new Vector2d();
 f = new Vector2d();
 
+let Color1, Color2;
+Color1 = getRandomColor();
+Color2 = getRandomColor();
+
 function anime()
 {
     context.clearRect(0,0, width,height);
 
     context.beginPath();
-    context.fillStyle = "rgba(225,255,0,0.2)";
+    context.fillStyle = Color1;
     context.moveTo(A.vPos.dx,A.vPos.dy);
     context.lineTo(B.vPos.dx,B.vPos.dy);
     context.lineTo(C.vPos.dx,C.vPos.dy);
@@ -43,7 +47,7 @@ function anime()
     C.draw(context);
 
     context.beginPath();
-    context.fillStyle = "rgba(225,255,0,0.2)";
+    context.fillStyle = Color2;
     context.moveTo(D.vPos.dx,D.vPos.dy);
     context.lineTo(E.vPos.dx,E.vPos.dy);
     context.lineTo(F.vPos.dx,F.vPos.dy);

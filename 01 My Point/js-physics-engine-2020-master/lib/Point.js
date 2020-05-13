@@ -11,7 +11,7 @@
 class Point
 {
 
-	constructor(pos,radius,color,draggable)
+	constructor(pos,radius,color,draggable, label)
 	{
 		this.pos = pos;
 		this.radius = radius;
@@ -22,6 +22,7 @@ class Point
 		{
 			this.drag();
 		}
+		this.label = label || "";
 	}
 
 	get vPos()
@@ -82,6 +83,8 @@ class Point
 		context.lineWidth = "5";
 		context.fillStyle = this.color;
 		context.arc(this.pos.dx, this.pos.dy, this.radius, 0, 2 * Math.PI);
+		context.font = "20px Comic Sans MS";
+		context.fillText(this.label, this.pos.dx - this.radius, this.pos.dy - this.radius);
 		context.closePath();
 		context.stroke();
 		context.fill();
