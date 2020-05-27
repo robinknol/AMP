@@ -64,23 +64,23 @@ function anime()
     MCA.pos.dy = (A.pos.dy + C.pos.dy)/2;
 
     AAB.slope = -1/lAB.slope;
-    AAB.intercept = C.pos.dy - C.pos.dx * AAB.slope;
+    AAB.intercept = MAB.pos.dy - MAB.pos.dx * AAB.slope;
     
     ABC.slope = -1/lBC.slope;
-    ABC.intercept = A.pos.dy - A.pos.dx * ABC.slope;
+    ABC.intercept = MBC.pos.dy - MBC.pos.dx * ABC.slope;
     
     ACA.slope = -1/lCA.slope;
-    ACA.intercept = B.pos.dy - B.pos.dx * ACA.slope;
+    ACA.intercept = MCA.pos.dy - MCA.pos.dx * ACA.slope;
 
     circumCenter.pos.dx = AAB.intersection(ABC).x;
     circumCenter.pos.dy = AAB.intersection(ABC).y;
 
     let tempX = circumCenter.pos.dx - A.pos.dx;
     let tempY = circumCenter.pos.dy - A.pos.dy;
-    distance = Math.sqrt(tempX*tempX + tempY*tempY);
+    distance = Math.sqrt(tempX * tempX + tempY * tempY);
 
     context.beginPath();
-    context.arc(circumCenter.pos.dx, circumCenter.pos.dy, distance, 0, 2*Math.PI);
+    context.arc(circumCenter.pos.dx, circumCenter.pos.dy, distance, 0, 2 * Math.PI);
     context.stroke();
 
     lAB.draw(context);
