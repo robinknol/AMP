@@ -13,6 +13,7 @@ let A, B, C;
 let lAB, lBC, lCA;
 let AAB, ABC, ACA;
 let MAB, MBC, MCA;
+let circumCenter, distance;
 
 A = new Point(new Vector2d(getRandomInt(0, width), getRandomInt(0, height)), 25, getRandomColor(), true, "A");
 B = new Point(new Vector2d(getRandomInt(0, width), getRandomInt(0, height)), 25, getRandomColor(), true, "B");
@@ -30,11 +31,13 @@ MAB = new Point(new Vector2d(0, 0), 12.5, getRandomColor(), false, "AB");
 MBC = new Point(new Vector2d(0, 0), 12.5, getRandomColor(), false, "BC");
 MCA = new Point(new Vector2d(0, 0), 12.5, getRandomColor(), false, "AC");
 
+circumCenter = new Point(new Vector2d(0, 0), 12.5, getRandomColor(), false);
+
 function anime()
 {
     context.clearRect(0,0, width,height);
 
-    context.fillStyle = "rgba(225,225,0,0.4)";
+    context.fillStyle = "rgba(225,225,0,0.2)";
     context.moveTo(A.pos.dx,A.pos.dy);
     context.lineTo(B.pos.dx,B.pos.dy);
     context.lineTo(C.pos.dx,C.pos.dy);
@@ -51,6 +54,15 @@ function anime()
     lCA.slope = (A.pos.dy - C.pos.dy)/(A.pos.dx - C.pos.dx);
     lCA.intercept = A.pos.dy - lCA.slope * A.pos.dx;
     
+    MAB.pos.dx = (B.pos.dx + A.pos.dx)/2;
+    MAB.pos.dy = (B.pos.dy + A.pos.dy)/2;
+
+    MBC.pos.dx = (B.pos.dx + C.pos.dx)/2;
+    MBC.pos.dy = (B.pos.dy + C.pos.dy)/2;
+    
+    MCA.pos.dx = (A.pos.dx + C.pos.dx)/2;
+    MCA.pos.dy = (A.pos.dy + C.pos.dy)/2;
+
     AAB.slope = -1/lAB.slope;
     AAB.intercept = C.pos.dy - C.pos.dx * AAB.slope;
     
@@ -60,8 +72,16 @@ function anime()
     ACA.slope = -1/lCA.slope;
     ACA.intercept = B.pos.dy - B.pos.dx * ACA.slope;
 
-    xs = (AAB.intercept - lBC.intercept) / (ABC.slope - lBC.slope);
-    MAB = AAB * xs + lBC.intercept;
+    circumCenter.pos.dx = AAB.intersection(ABC).x;
+    circumCenter.pos.dy = AAB.intersection(ABC).y;
+
+    let tempX = circumCenter.pos.dx - A.pos.dx;
+    let tempY = circumCenter.pos.dy - A.pos.dy;
+    distance = Math.sqrt(tempX*tempX + tempY*tempY);
+
+    context.beginPath();
+    context.arc(circumCenter.pos.dx, circumCenter.pos.dy, distance, 0, 2*Math.PI);
+    context.stroke();
 
     lAB.draw(context);
     lBC.draw(context);
@@ -71,11 +91,15 @@ function anime()
     ABC.draw(context);
     ACA.draw(context);
 
+    MAB.draw(context);
+    MBC.draw(context);
+    MCA.draw(context);
+
     A.draw(context);
     B.draw(context);
     C.draw(context);
 
-    MAB.draw(context);
+    circumCenter.draw(context);
 }
 
 
