@@ -8,7 +8,7 @@ canvas.width = width;
 canvas.height = height;
 
 // begin hier met jouw code voor deze opdracht
-let img,img2,angle;
+let img,angle;
 
 img = new Image();
 img.src = "images/cog.png";
