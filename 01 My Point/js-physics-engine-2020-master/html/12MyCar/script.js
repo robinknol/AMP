@@ -11,30 +11,37 @@ canvas.height = height;
 
 let car, wheel, background, angle, LR;
 
-car ={};
+car = {};
+
 car.image = new Image();
 car.image.src = "images/car.png"
-car.pos = 0;
-car.speed = 2;
 
-wheel = {};
-wheel.image = new Image()
-wheel.image.src = "images/wheel.png";
-wheel.backAngle = 0;
+car.pos = 0;
+car.speed = 0;
+
+wheels = {};
+
+wheels.backWheel = new Image()
+wheels.backWheel.src = "images/wheel.png";
+
+wheels.frontWheel = new Image()
+wheels.frontWheel.src = "images/wheel.png";
+
+wheels.angle = 0;
 
 addEventListener('keydown',(e)=>
-{
-    switch(e.key)
+{    
+    if (e.key == "ArrowRight")
     {
-        case "ArrowRight":
-            car.speed += 0.5
-            LR = true;
-            break;
-        
-        case "ArrowLeft":
-            car.speed -= 0.5
-            LR = false;
-            break;
+        console.debug("Right");
+        car.speed += 0.5
+        LR = true;
+    }
+    if (e.key == "ArrowLeft")
+    {
+        console.debug("Left");
+        car.speed -= 0.5
+        LR = false;
     }
 })
 
@@ -47,15 +54,22 @@ function animate()
 {
     context.clearRect(0,0,width,height);
 
-    context.drawImage(car.image,car.pos,0);
+    context.drawImage(car.image, car.pos, 0);
 
     context.save()
     context.translate(car.pos + 213,200)
-    context.rotate(wheel.backAngle);
-    context.drawImage(wheel.image, -wheel.image.width/2, -wheel.image.height/2)
+    context.rotate(wheels.angle);
+    context.drawImage(wheels.backWheel, -wheels.backWheel.width/2, -wheels.backWheel.height/2)
+    context.restore()
+
+    context.save()
+    context.translate(car.pos + 753,200)
+    context.rotate(wheels.angle);
+    context.drawImage(wheels.frontWheel, -wheels.frontWheel.width/2, -wheels.frontWheel.height/2)
     context.restore()  
 
     car.pos += car.speed;
+
     if(car.pos > width)
     {
       car.pos = -car.image.width
@@ -65,13 +79,5 @@ function animate()
       car.pos = width;
     }
 
-    if (LR = true)
-    {
-        wheel.backAngle += 0.2;        
-    }
-    if (LR = false)
-    {
-        wheel.backAngle -= 0.2;
-    }
-    console.debug(wheel.backAngle);
+    wheels.angle += car.speed / (0.5 * wheels.backWheel.width);
 }
