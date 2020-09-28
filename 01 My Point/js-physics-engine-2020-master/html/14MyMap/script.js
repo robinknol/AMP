@@ -17,8 +17,8 @@ Highres.src = "images/map_highres.jpg";
 Lowres = new Image();
 Lowres.src = "images/map_lowres.jpg";
 
-// scale.pos.dx = Highres.width / Lowres.width;
-// scale.pos.dy = Highres.height / Lowres.height;
+scale = Highres.width / Lowres.width;
+cordinate = {};
 
 circel = new Point(new Vector2d(400, 200), 100, "white", true);
 
@@ -26,15 +26,14 @@ setInterval(animate,10);
 
 function animate()
 {
-    cordinate = circel.dx - circel.radius;
-    cordinate.pos.dy = circel.pos.dy - circel.radius;
+    cordinate.x = circel.pos.dx - circel.radius;
+    cordinate.y = circel.pos.dy - circel.radius;
 
-    context.clearRect(0,0,width,height);
+    context.clearRect(0, 0, width, height);
 
-    // context.drawImage(Highres, 0, 0, 200, 200, 500, 300, 200, 200);
-    context.drawImage(Lowres, 0, 0);
+    context.drawImage(Lowres, 0, 0, width, height);
 
-    Point.draw(context);
-
+    context.fillRect(cordinate.x - 5, cordinate.y - 5, 2 * circel.radius + 10, 2 * circel.radius + 10)
+    context.drawImage(Highres, cordinate.x, cordinate.y, 200, 200, cordinate.x, cordinate.y, 2 * circel.radius, 2 * circel.radius);
 }
 
