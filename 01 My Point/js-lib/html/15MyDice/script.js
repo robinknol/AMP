@@ -39,11 +39,6 @@ Dice.image.addEventListener('load',()=>
     sw = Dice.image.width / 6;
     sh = Dice.image.height;
 
-    // roll.one = getRandomInt(0,5);
-    // roll.two = getRandomInt(0,5);
-    // score = roll.one + roll.two + 2;
-    // scoreList[score - 2]++;
-
     setInterval(animate,10);
 })
 
