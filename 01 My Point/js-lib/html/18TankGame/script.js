@@ -20,6 +20,8 @@ greenTank.animationArray = [1, 2, 3, 4, 5, 6, 7, 8];
 greenTank.index = 0;
 greenTank.x = 100;
 greenTank.y = 100;
+greenTank.vx = 0;
+greenTank.vy = -20;
 greenTank.draw = function()
 {
     greenTank.sx = greenTank.animationArray[greenTank.index] * 84;
@@ -28,8 +30,6 @@ greenTank.draw = function()
     greenTank.sh = 84;
     greenTank.w = 84;
     greenTank.h = 84;
-    greenTank.vx = 0;
-    greenTank.vy = -20;
 
 
     context.drawImage(spriteSheet, greenTank.sx, greenTank.sy, greenTank.sw, greenTank.sh, greenTank.x, greenTank.y, greenTank.w, greenTank.h);
@@ -43,7 +43,19 @@ greenTank.Update = function()
 
     if (greenTank.y < 0)
     {
-        greenTank.y = height
+        greenTank.y = height;
+    }
+    if (greenTank.x < 0)
+    {
+        greenTank.x = width;
+    }
+    if (greenTank.y > height)
+    {
+        greenTank.y = 0;
+    }
+    if (greenTank.x > width)
+    {
+        greenTank.x = 0;
     }
 }
 
@@ -77,11 +89,39 @@ blueTank.Update = function()
         blueTank.y = height
     }
 }
+
+window.addEventListener('keydown',(input)=>
+{
+    console.log(input.key);
+    switch (input.key) {
+        case "w":
+        case "ArrowUp":
+            greenTank.vx = 0;
+            greenTank.vy = -10;
+            break;
+        case "a":
+        case "ArrowLeft":
+            greenTank.vx = -10;
+            greenTank.vy = 0;
+            break;
+        case "s":
+        case "ArrowDown":
+            greenTank.vx = 0;
+            greenTank.vy = 10;
+            break;
+        case "d":
+        case "ArrowRight":
+            greenTank.vx = 10;
+            greenTank.vy = 0;
+            break;
+    }
+})
+
 spriteSheet.addEventListener('load',()=>
 {
     sw = spriteSheet.width/8;
     sh = spriteSheet.height/4;
-    setInterval(animate, 1000);
+    setInterval(animate, 100);
 })
 
 function animate()
