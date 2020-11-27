@@ -18,21 +18,27 @@ spriteSheet.src = "images/tanksheet.png";
 greenTank = {};
 greenTank.animationArray = [1, 2, 3, 4, 5, 6, 7, 8];
 greenTank.index = 0;
+greenTank.direction = 0;
 greenTank.x = 100;
 greenTank.y = 100;
 greenTank.vx = 0;
 greenTank.vy = -20;
+
+greenTank.sw = 84;
+greenTank.sh = 84;
+greenTank.w = 84;
+greenTank.h = 84;
 greenTank.draw = function()
 {
     greenTank.sx = greenTank.animationArray[greenTank.index] * 84;
     greenTank.sy = Math.floor(greenTank.animationArray[greenTank.index]/8) * 84;
-    greenTank.sw = 84;
-    greenTank.sh = 84;
-    greenTank.w = 84;
-    greenTank.h = 84;
 
+    context.save();
+    context.translate(greenTank.x, greenTank.y);
+    context.rotate(greenTank.direction);
 
-    context.drawImage(spriteSheet, greenTank.sx, greenTank.sy, greenTank.sw, greenTank.sh, greenTank.x, greenTank.y, greenTank.w, greenTank.h);
+    context.drawImage(spriteSheet, greenTank.sx, greenTank.sy, greenTank.sw, greenTank.sh, -42, -42, greenTank.w, greenTank.h);
+    context.restore();
     // console.log("sx = " + greenTank.sx, "sy = " + greenTank.sy, "sw = " + greenTank.sw, "sh = " + greenTank.sh, "x = " + greenTank.x, "y = " + greenTank.y, "w = " +greenTank. w, "h = " + greenTank.h)
 }
 
@@ -58,6 +64,37 @@ greenTank.Update = function()
         greenTank.x = 0;
     }
 }
+
+window.addEventListener('keydown',(input)=>
+{
+    console.log(input.key);
+    switch (input.key) {
+        case "w":
+        case "ArrowUp":
+            greenTank.vx = 0;
+            greenTank.vy = -10;
+            greenTank.direction = 0 
+            break;
+        case "a":
+        case "ArrowLeft":
+            greenTank.vx = -10;
+            greenTank.vy = 0;
+            greenTank.direction = 1.5 * Math.PI;
+            break;
+        case "s":
+        case "ArrowDown":
+            greenTank.vx = 0;
+            greenTank.vy = 10;
+            greenTank.direction =  Math.PI;
+            break;
+        case "d":
+        case "ArrowRight":
+            greenTank.vx = 10;
+            greenTank.vy = 0;
+            greenTank.direction = 0.5 * Math.PI;
+            break;
+    }
+})
 
 blueTank = {};
 blueTank.animationArray = [9, 10, 11, 12, 13, 14, 15, 16];
@@ -90,33 +127,6 @@ blueTank.Update = function()
     }
 }
 
-window.addEventListener('keydown',(input)=>
-{
-    console.log(input.key);
-    switch (input.key) {
-        case "w":
-        case "ArrowUp":
-            greenTank.vx = 0;
-            greenTank.vy = -10;
-            break;
-        case "a":
-        case "ArrowLeft":
-            greenTank.vx = -10;
-            greenTank.vy = 0;
-            break;
-        case "s":
-        case "ArrowDown":
-            greenTank.vx = 0;
-            greenTank.vy = 10;
-            break;
-        case "d":
-        case "ArrowRight":
-            greenTank.vx = 10;
-            greenTank.vy = 0;
-            break;
-    }
-})
-
 spriteSheet.addEventListener('load',()=>
 {
     sw = spriteSheet.width/8;
@@ -135,6 +145,7 @@ function animate()
         greenTank.index = 0
     }
 
+    /*
     blueTank.draw();
     blueTank.Update();
     blueTank.index += 1;
@@ -142,4 +153,5 @@ function animate()
     {
         blueTank.index = 0
     }
+    */
 }

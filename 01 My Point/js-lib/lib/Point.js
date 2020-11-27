@@ -77,7 +77,7 @@ class Point
 		})
 	}
 
-	draw(context)
+	draw()
 	{
 		context.beginPath();
 		context.lineWidth = "5";
