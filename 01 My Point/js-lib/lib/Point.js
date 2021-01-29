@@ -11,7 +11,7 @@
 class Point
 {
 
-	constructor(pos,radius,color,draggable, label)
+	constructor(pos, radius, color, draggable, label)
 	{
 		this.pos = pos;
 		this.radius = radius;
