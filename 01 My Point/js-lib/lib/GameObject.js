@@ -1,10 +1,11 @@
 class  GameObject
 {
-    constructor(pos,vel,acc)
+    constructor(pos,vel,acc,test)
     {
         this.pos = pos;
         this.vel = vel;
         this.acc = acc;
+        this.test = test || 0;
         this.radius = 10;
         this.color ="rgba(0,0,0,0.3)";
     }

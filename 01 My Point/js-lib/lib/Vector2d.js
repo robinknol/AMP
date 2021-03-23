@@ -46,16 +46,16 @@ class Vector2d
 		this.dx = vectorA.dx - vectorB.dx;
 		this.dy = vectorA.dy - vectorB.dy;
 	}
-  
-	draw(x,y,vcolor,scale)
+
+	draw(x,y,Vcolor,scale)
 	{
-		let color = vcolor || "white";
-		let vscale = scale || 1 ;
+		let color = Vcolor || "white";
+		let Vscale = scale || 1 ;
 		let sh = 7;
 	
 		let hh = 20;
 		let hw = 30;
-		let sw = this.magnitude*vscale - hw;
+		let sw = this.magnitude*Vscale - hw;
 	
 		context.save();
 		context.beginPath();
