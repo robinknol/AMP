@@ -14,6 +14,11 @@ class Vector2d
 		this.dx = dx;
 		this.dy = dy;
 	}
+
+	dotProduct(b)
+	{
+		return (this.dx * b.dx) + (this.dy * b.dy);
+	}
   
 	get magnitude()
 	{
@@ -47,15 +52,15 @@ class Vector2d
 		this.dy = vectorA.dy - vectorB.dy;
 	}
 
-	draw(x,y,Vcolor,scale)
+	draw(x,y,VColor,scale)
 	{
-		let color = Vcolor || "white";
-		let Vscale = scale || 1 ;
+		let color = VColor || "white";
+		let VScale = scale || 1 ;
 		let sh = 7;
 	
 		let hh = 20;
 		let hw = 30;
-		let sw = this.magnitude*Vscale - hw;
+		let sw = this.magnitude*VScale - hw;
 	
 		context.save();
 		context.beginPath();

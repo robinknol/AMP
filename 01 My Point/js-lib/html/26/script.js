@@ -6,83 +6,85 @@ const height = window.innerHeight;
 
 canvas.width = width;
 canvas.height = height;
-/*
-let A, B, PosA, PosB, DifAB, DifX, DifY;
 
-A = new Point(new Vector2d(0.2 * width, 0.2 * height), 15, getRandomColor(), true, "A");
-B = new Point(new Vector2d(0.8 * width, 0.3 * height), 15, getRandomColor(), true, "B");
+let A, B, C, S, L, M, dif, position, velocityX, velocityY;
 
-PosA = new Vector2d(A.pos.dx, A.pos.dy);
-PosB = new Vector2d(B.pos.dx, B.pos.dy);
+dif = new Vector2d(0,0);
 
-DifX = new Vector2d(B.pos.dx - A.pos.dx, 0);
-DifY = new Vector2d(0, B.pos.dy - A.pos.dy);
-DifAB = new Vector2d(B.pos.dx - A.pos.dx, B.pos.dy - A.pos.dy);
+A = new Point(new Vector2d(getRandomInt(0, width), getRandomInt(0, height)), 45, getRandomColor(), true, "A");
+B = new Point(new Vector2d(getRandomInt(0, width), getRandomInt(0, height)), 45, getRandomColor(), true, "B");
+C = new Point(new Vector2d(getRandomInt(0, width), getRandomInt(0, height)), 15, getRandomColor(), false, "C", dif);
+S = new Point(new Vector2d(0,0), 15, C.color, false, "S");
+
+L = new LinearFunction(1,1);
+M = new LinearFunction (1,1)
+
+
+position = C.pos;
+velocityX = 1;
+velocityY = 1;
 
 animate();
 
 //animation loop
-function animate()
-{
-    context.clearRect(0, 0, width,height);
+function animate() {
+    context.clearRect(0, 0, width, height);
     requestAnimationFrame(animate);
 
-    PosA.dx = A.pos.dx;
-    PosA.dy = A.pos.dy;
-    PosB.dx = B.pos.dx;
-    PosB.dy = B.pos.dy;
+    // L.throughTwoPoints(A.pos,B.pos);
+    L.throughTwoPoints(A.pos,B.pos);
 
-    DifAB.difVector(PosA, PosB);
-    DifX.dx = B.pos.dx - A.pos.dx;
-    DifY.dy = B.pos.dy - A.pos.dy;
+    M.slope = -1/L.slope;
+    M.intercept = C.pos.dy - C.pos.dx * M.slope;
 
+    S.pos.dx = L.intersection(M).x;
+    S.pos.dy = L.intersection(M).y;
+
+    position.dx += velocityX;
+    position.dy += velocityY;
+
+    /*
+    switch (true)
+    {
+        case (position.dx > width):
+            velocityX = -1;
+            break;
+        case (position.dx < 0):
+            velocityX = 1;
+            break;
+        case (position.dy > height):
+            velocityY = -1;
+            break;
+        case (position.dy < 0):
+            velocityY = 1;
+            break;
+    }
+    */
+
+    switch (true)
+    {
+        case (position.dx > width):
+            velocityX = -1;
+            break;
+        case (position.dx < 0):
+            velocityX = 1;
+            break;
+        case (position.dy > height):
+            velocityY = -1;
+            break;
+        case (position.dy < 0):
+            velocityY = 1;
+            break;
+    }
+
+    dif.magnitude = 1;
+    // dif.sumVector(S.pos, position);
+
+    L.draw(context);
+    M.draw(context);
     A.draw(context);
     B.draw(context);
-
-    DifAB.draw(A.pos.dx, A.pos.dx, "yellow", 1);
-    DifX.draw(A.pos.dx, A.pos.dx, "red", 1);
-    DifY.draw(A.pos.dx, A.pos.dx, "red", 1);
-
-    // PosA.draw(0,0, "White", 1);
-    // PosB.draw(0,0, "White", 1);
-}
- */
-
-let A, B, posA,posB,difAB,difX,difY;
-
-A = new Point(new Vector2d(0.2*width,0.2*height),20,"red",true,"A");
-B = new Point(new Vector2d(0.8*width,0.3*height),20,"blue",true,"B")
-
-posA = new Vector2d(A.pos.dx,A.pos.dy);
-posB = new Vector2d(B.pos.dx,B.pos.dy);
-
-difAB = new Vector2d(B.pos.dx-A.pos.dx,B.pos.dy-A.pos.dy);
-difX = new Vector2d(B.pos.dx-A.pos.dx,0);
-difY = new Vector2d(0,B.pos.dy-A.pos.dy);
-
-
-animate();
-
-
-function animate() {
-    context.clearRect(0, 0, width, height)
-    requestAnimationFrame(animate);
-    posA.dx = A.pos.dx;
-    posA.dy = A.pos.dy;
-    posB.dx = B.pos.dx;
-    posB.dy = B.pos.dy;
-    difAB.difVector(posB, posA);
-    difX.dx = B.pos.dx - A.pos.dx;
-    difY.dy = B.pos.dy - A.pos.dy;
-
-
-    B.draw();
-
-    //posA.draw(0,0,"white",1);
-    //posB.draw(0,0,"white",1);
-    difAB.draw(A.pos.dx, A.pos.dy, "yellow", 1);
-    difX.draw(A.pos.dx, A.pos.dy, "red", 1);
-    difY.draw(A.pos.dx, A.pos.dy, "red", 1);
-
-    A.draw();
+    C.draw(context);
+    C.vel.draw(position.dx, position.dy,"red",60);
+    S.draw(context);
 }

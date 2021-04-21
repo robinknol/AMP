@@ -24,8 +24,8 @@ function animate()
 
     point.draw();
     point.vPos.draw(0,0);
-    velocity.vectorSum(velocity, acc);
-    position.vectorSum(position, velocity);
+    velocity.sumVector(velocity, acc);
+    position.sumVector(position, velocity);
     point.vPos = position;
     
     if(point.vPos.dy > height)
@@ -33,7 +33,7 @@ function animate()
         velocity.dy = -velocity.dy;
         position.dy = height;
     }
-    
+
     if(point.vPos.dy < 0 )
     {
         velocity.dy = -velocity.dy;
@@ -45,6 +45,6 @@ function animate()
     }
     if(point.vPos.dx < 0 )
     {
-        velocity.dx = -velocity.dx ;
+        velocity.dx = -velocity.dx;
     }
 }

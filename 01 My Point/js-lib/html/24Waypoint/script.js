@@ -31,7 +31,7 @@ function animate() {
 
     for (let i = 0; i <= length; i++)
     {
-        circle[i].draw(context)
+        circle[i].draw(context);
         point[i].draw(context);
         if (point[i].pos.dx < circle[point[i].test].pos.dx + num2 && point[i].pos.dx > circle[point[i].test].pos.dx - num2 && point[i].pos.dy > circle[point[i].test].pos.dy - num2 && point[i].pos.dy < circle[point[i].test].pos.dy + num2)
         {

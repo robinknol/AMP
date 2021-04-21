@@ -11,7 +11,7 @@
 class Point
 {
 
-	constructor(pos, radius, color, draggable, label)
+	constructor(pos, radius, color, draggable, label, vel)
 	{
 		this.pos = pos;
 		this.radius = radius;
@@ -23,6 +23,7 @@ class Point
 			this.drag();
 		}
 		this.label = label || "";
+		this.vel = vel || false;
 	}
 
 	get vPos()
@@ -34,6 +35,32 @@ class Point
 	{
 		this.pos.dx = vector.dx;
         this.pos.dy = vector.dy;
+	}
+
+	update()
+	{
+		this.vel.sumVector(this.vel,this.acc);
+		this.pos.sumVector(this.pos,this.vel);
+		if(this.pos.dy > height-this.radius && this.boxed)
+		{
+			this.vel.dy = -this.vel.dy;
+			this.pos.dy = height-this.radius;
+		}
+		if(this.pos.dy < this.radius && this.boxed)
+		{
+			this.vel.dy = -this.vel.dy;
+			this.pos.dy = this.radius;
+		}
+		if(this.pos.dx > width-this.radius && this.boxed)
+		{
+			this.vel.dx = -this.vel.dx;
+			this.pos.dx = width-this.radius;
+		}
+		if(this.pos.dx < this.radius && this.boxed)
+		{
+			this.vel.dx = -this.vel.dx;
+			this.pos.dx = this.radius;
+		}
 	}
 
 	drag()

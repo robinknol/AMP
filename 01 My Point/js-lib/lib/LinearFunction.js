@@ -11,6 +11,15 @@ class LinearFunction
         return x * this.slope + this.intercept
     }
 
+    throughTwoPoints(A,B)
+    {
+        let dx = B.dx - A.dx;
+        let dy = B.dy - A.dy;
+
+        this.slope = dy/dx;
+        this.intercept = A.dy - this.slope * A.dx;
+    }
+
     intersection(line)
     {
         let ans = {}
