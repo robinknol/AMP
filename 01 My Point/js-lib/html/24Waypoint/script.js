@@ -51,5 +51,4 @@ function animate() {
         point[i].pos.sumVector(point[i].pos, dif);
 
     }
-
 }
