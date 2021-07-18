@@ -1,12 +1,12 @@
 class  GameObject
 {
-    constructor(pos,vel,acc,boxed)
+    constructor(pos,vel,acc, radius, boxed)
     {
         this.pos = pos;
         this.vel = vel;
         this.acc = acc;
-        this.radius = 10;
-        this.color ="rgba(0,0,0,0.3)";
+        this.radius = radius || 10;
+        this.color = "rgba(0,0,0,0.3)";
 
         this.boxed = boxed || true;
         console.log('boxed is',boxed)
@@ -16,7 +16,7 @@ class  GameObject
     update(){
         this.vel.sumVector(this.vel,this.acc);
         this.pos.sumVector(this.pos,this.vel);
-        if(this.pos.dy > height-this.radius && this.boxed)
+        if(this.pos.dy > height - this.radius && this.boxed)
         {
             this.vel.dy = -this.vel.dy;
             this.pos.dy = height-this.radius;

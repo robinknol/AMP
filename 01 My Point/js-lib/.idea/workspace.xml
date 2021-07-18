@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2b369104-a065-4f66-b08f-92be3b767e9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/html/29/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/29/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/29/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/20TheVector/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/20TheVector/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/26/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/26/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/GameObject.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/GameObject.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Vector2d.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Vector2d.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1uFzEI0swYExgg07zwSe6ZtU6z8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Gastles" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b369104-a065-4f66-b08f-92be3b767e9b" name="Default Changelist" comment="" />
+      <created>1624276011509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624276011509</updated>
+      <workItem from="1624276012661" duration="422000" />
+      <workItem from="1624449745400" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

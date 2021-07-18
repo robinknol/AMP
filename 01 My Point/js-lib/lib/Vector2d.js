@@ -60,7 +60,7 @@ class Vector2d
 	
 		let hh = 20;
 		let hw = 30;
-		let sw = this.magnitude*VScale - hw;
+		let sw = this.magnitude * VScale - hw;
 	
 		context.save();
 		context.beginPath();

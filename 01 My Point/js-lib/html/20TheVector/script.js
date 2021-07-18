@@ -25,12 +25,12 @@ function animate()
     window.requestAnimationFrame(animate);
     context.clearRect(0, 0, width, height);
 
-    sumVector.vectorSum(PointA.vPos, PointB.vPos);
-    diffVector.diffVector(PointA.vPos, PointB.vPos);
+    sumVector.sumVector(PointA.vPos, PointB.vPos);
+    diffVector.difVector(PointA.vPos, PointB.vPos);
 
     PointA.vPos.draw(0,0);
-    PointB.vPos.draw(0,0);
     PointB.vPos.draw(PointA.vPos.dx,PointA.vPos.dy);
+
     sumVector.draw(0,0);
     diffVector.draw(PointB.vPos.dx, PointB.vPos.dy);
 
